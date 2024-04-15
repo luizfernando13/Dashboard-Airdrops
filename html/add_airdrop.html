@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Airdrop - Gerenciador de Airdrops</title>
+  <link href="../styles/add_airdrop.css" rel="stylesheet">
+  <link href="../styles/options.css" rel="stylesheet">
+</head>
+<body>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../logo.png" alt="Logotipo" />
+    </div>
+    <a href="options.html" class="button sidebar-button">
+      <span class="button-icon">🏠</span>
+      <span class="button-text">Página Principal</span>
+    </a>
+    <a href="airdrops_tutorial.html" class="button sidebar-button">
+      <span class="button-icon">🎁</span>
+      <span class="button-text">Airdrops do Momento</span>
+    </a>
+  </aside>
+
+  <div class="main-content">
+    <div class="container">
+      <h2 class="title">Adicionar Novo Airdrop</h2>
+      <div class="form-container">
+        <form id="new-airdrop-form" class="form">
+          <div class="field">
+            <label for="stage-select" class="label">Selecione a Etapa:</label>
+            <select id="stage-select" class="input" required>
+              <!-- As opções serão carregadas pelo JavaScript -->
+            </select>
+          </div>
+          <div class="field">
+            <label for="airdrop-name" class="label">Nome do Airdrop:</label>
+            <input type="text" id="airdrop-name" class="input" required>
+          </div>
+          <div class="field">
+            <label for="airdrop-website" class="label">Site:</label>
+            <input type="url" id="airdrop-website" class="input" required>
+          </div>
+          <div class="field">
+            <label for="airdrop-wallet" class="label">Carteira Utilizada:</label>
+            <input type="text" id="airdrop-wallet" class="input" required>
+          </div>
+          <div class="field">
+            <label for="daily-checkin" class="label">Adicionar Checkin Diário?</label>
+            <input type="checkbox" id="daily-checkin" class="input">
+          </div>
+          <button type="submit" class="button-submit">
+            <span class="button-icon">💾</span> <!-- Ícone de disco para salvar -->
+            <span class="button-text">Gravar</span> <!-- Texto do botão -->
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/airdrops.js"></script>
+</body>
+</html>

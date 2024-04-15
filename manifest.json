@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Dashboard para Airdrops",
+    "version": "1.0",
+    "description": "Gerencie seus airdrops de criptomoedas.",
+    "permissions": ["storage", "activeTab"],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self';"
+    },
+    "options_page": "html/options.html",
+    "icons": {
+      "128": "logo.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_icon": {
+        "128": "logo.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["main.js"]
+      }
+    ]
+  }
+  
