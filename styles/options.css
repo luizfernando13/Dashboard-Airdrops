@@ -27,18 +27,25 @@ html {
 }
 
 .sidebar {
-  width: 250px;
-  background-color: #2C3E50;
+  width: 250px; /* Largura fixa */
+  background-color: #191F2F;
   color: #FFF;
   padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
+.button-icon {
+  width: 30px; /* ou a dimensão que preferir */
+  height: auto; /* mantém a proporção do ícone */
+  margin-right: 10px; /* ajuste conforme necessário */
+}
+
 .main-content {
   flex-grow: 1;
   padding: 20px;
   overflow-x: hidden;
+  min-height: 800px; /* Ajuste conforme necessário */
 }
 
 /* 3. Header */
@@ -112,6 +119,7 @@ html {
 
 /* 5. Kanban Board */
 #kanban-board {
+  margin-top: 60px;
   width: calc(100% - 40px);
   display: flex;
   flex-wrap: wrap;
@@ -124,7 +132,25 @@ html {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
+  overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura */
+  max-height: 80vh; /* 80% da altura da viewport */
 }
+
+/* Estiliza a barra de rolagem para todos os elementos scrolláveis dentro de .kanban-column */
+.kanban-column::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+  background-color: #f4f7fc; /* Cor de fundo da barra de rolagem */
+}
+
+.kanban-column::-webkit-scrollbar-thumb {
+  border-radius: 4px; /* Bordas arredondadas para o thumb */
+  background-color: #f4f7fc; /* Cor do thumb da barra de rolagem */
+}
+
+.kanban-column::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8; /* Cor do thumb ao passar o mouse */
+}
+
 
 .kanban-stage-header {
   display: flex;
@@ -197,7 +223,6 @@ html {
 
 /* 6. Sidebar */
 .sidebar-button {
-  background-color: #34495E;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -221,13 +246,31 @@ html {
   flex-grow: 1;
 }
 
-/* 7. Logo */
-.logo img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 50px;
+.sidebar-separator {
+  border-bottom: 1px solid #ffffff; /* Use uma cor que combine com o design */
+  margin: 10px 0; /* Espaçamento acima e abaixo do separador */
 }
+
+/* Sidebar logo and title side by side */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0px; /* Reduz o espaço entre o logo e o texto, ajuste conforme necessário */
+}
+
+.logo-image {
+  width: 100px; /* Tamanho do logo ajustado para ficar menor */
+  height: auto;
+}
+
+.logo-title {
+  font-size: 2.5em; /* Tamanho da fonte do título */
+  color: #FFF; /* Cor do texto */
+  margin: -30; /* Remove qualquer margem padrão */
+  padding-left: 0px; /* Adiciona um pequeno espaço à esquerda do título, se necessário */
+}
+
+
 
 /* 8. Checkbox */
 .checkbox-container {
