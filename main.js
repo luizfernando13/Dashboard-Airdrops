@@ -54,13 +54,17 @@ function createAirdropList(airdrops, stageIndex) {
 function createAirdropCard(airdrop, stageIndex, airdropIndex) {
   const airdropCard = document.createElement('div');
   airdropCard.className = 'airdrop-card';
-  airdropCard.setAttribute('data-airdrop-id', airdrop.id); // Definir o ID do airdrop no cartão
+  airdropCard.setAttribute('data-airdrop-id', airdrop.id);
+
+  // Resumo do endereço da carteira
+  const walletText = summarizeText(airdrop.wallet, 25);
+
   airdropCard.innerHTML = `
     <div class="airdrop-details">
       <div class="airdrop-name">${airdrop.name}</div>
       <div style="margin-top: 10px;">
         <div class="airdrop-website">Site: <a href="${airdrop.website}" target="_blank">${formatUrl(airdrop.website)}</a></div>
-        <div class="airdrop-wallet">Carteira: ${airdrop.wallet}</div>
+        <div class="airdrop-wallet" data-full-wallet="${airdrop.wallet}">Carteira: ${walletText}</div>
       </div>
     </div>
   `;
@@ -101,6 +105,13 @@ function createAirdropCard(airdrop, stageIndex, airdropIndex) {
   return airdropCard;
 }
 
+function summarizeText(text, maxChars) {
+  if (text.length <= maxChars) return text;
+  let half = Math.floor(maxChars / 2);
+  return text.substring(0, half) + '...' + text.substring(text.length - half);
+}
+
+
 // Cria o elemento de check-in
 function createCheckinElement(airdrop) {
   if (!airdrop.dailyCheckin) {
@@ -133,6 +144,14 @@ document.addEventListener('click', function(event) {
   if (event.target.classList.contains('daily-checkin-checkbox')) {
     const airdropId = event.target.getAttribute('data-airdrop-id');
     performDailyCheckin(airdropId);
+  }
+});
+
+// Adiciona o evento para copiar o endereço completo da carteira
+document.addEventListener('click', function(event) {
+  if (event.target.classList.contains('airdrop-wallet')) {
+    const fullWalletAddress = event.target.getAttribute('data-full-wallet');
+    copyToClipboard(fullWalletAddress);
   }
 });
 
@@ -169,7 +188,6 @@ function deleteAirdrop(airdropId) {
 function formatUrl(url) {
   return url.replace(/^https?:\/\/www\./i, '');
 }
-
 
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
