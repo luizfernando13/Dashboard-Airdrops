@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Airdrop's Dashboard</title>
   <link href="../styles/options.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -37,10 +40,28 @@
             <span class="button-icon">➕</span>
             <span class="tooltip">Novo Airdrop</span>
         </a>
-    </div>
+        <button id="archive-button" class="button header-button">
+            <span class="button-icon">📁</span>
+            <span class="tooltip">Arquivados</span>
+        </button>
+      </div>
     </div>
     <div id="kanban-board" class="kanban-board">
       <!-- As colunas e cartões do Kanban serão inseridos aqui via JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Arquivamento -->
+<div id="archive-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Cartões Arquivados</h2>
+    </div>
+    <div class="border-archived"></div>
+    <div id="archived-cards">
+      <!-- Cartões arquivados serão adicionados aqui -->
     </div>
   </div>
 </div>
